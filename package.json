@@ -1,0 +1,26 @@
+{
+  "name": "xico2k-react-scroll-area",
+  "version": "1.0.0",
+  "author": "Francisco Madeira",
+  "homepage": "https://xico2k.github.io/multi-sort/",
+  "license": "MIT",
+  "repository": "https://github.com/xico2k/multi-sort",
+  "main": "lib/index.js",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-jest": "^21.2.0",
+    "babel-preset-env": "^1.6.0",
+    "eslint": "^4.8.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "jest": "^21.2.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
+  "scripts": {
+    "lib": "rm -rf lib && NODE_ENV=production babel src --out-dir lib --copy-files --ignore '**/*.test.js'",
+    "test": "NODE_ENV=testing jest",
+    "lint": "eslint ."
+  }
+}
