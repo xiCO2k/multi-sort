@@ -7,13 +7,13 @@ it('can sort an array with objects', () => {
         { first_name: 'Anthony', last_name: 'Carlos' }
     ];
 
-    expect(MultiSort(data, 'first_name', 'ASC', '_key')[0].first_name).toBe('Anthony');
+    expect(MultiSort(data, 'first_name', 'ASC')[0].first_name).toBe('Anthony');
     expect(MultiSort(data, ['first_name', 'last_name'], ['ASC', 'ASC'])[0].last_name).toBe('Carlos');
     expect(MultiSort(data, ['first_name', 'last_name'], ['ASC', 'DESC'])[0].last_name).toBe('Zipher');
     expect(MultiSort(data, { first_name: 'ASC', last_name: 'DESC' })[0].last_name).toBe('Zipher');
 });
 
-it('can sort an object with objects', () => {
+it('can sort an object with objects', () => {
     let data = {
         key1: { first_name: 'John', last_name: 'Doe' },
         key2: { first_name: 'Anthony', last_name: 'Zipher' },

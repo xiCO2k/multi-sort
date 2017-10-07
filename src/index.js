@@ -17,7 +17,7 @@ function validateParams(data, columns, orderBy, key) {
     validateKey(key);
 }
 
-function formatArguments(data = [], args) {
+function formatArguments(args) {
     let columns = [],
         orderBy = [],
         key = '_key';
@@ -102,7 +102,7 @@ function sort(a, b, columns, orderBy, index) {
 }
 
 export default function MultiSort(arr = [], ...args) {
-    let { columns, orderBy, key } = formatArguments(arr, args);
+    let { columns, orderBy, key } = formatArguments(args);
     validateParams(arr, columns, orderBy, key); //it throws
     return formatData(arr, key).sort((a, b) => sort(a, b, columns, orderBy, 0));
 }
