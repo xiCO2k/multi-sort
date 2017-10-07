@@ -1,6 +1,6 @@
 {
   "name": "multi-sort",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Francisco Madeira",
   "homepage": "https://xico2k.github.io/multi-sort/",
   "license": "MIT",
@@ -10,8 +10,8 @@
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.1",
     "babel-jest": "^21.2.0",
-    "babel-preset-env": "^1.6.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
     "eslint": "^4.8.0",
     "eslint-plugin-babel": "^4.1.2",
     "jest": "^21.2.1"
