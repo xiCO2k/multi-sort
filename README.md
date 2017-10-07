@@ -1,7 +1,6 @@
 [![Build Status](https://travis-ci.org/xiCO2k/multi-sort.svg?branch=master)](https://travis-ci.org/xiCO2k/multi-sort)
 [![npm downloads](https://img.shields.io/npm/dt/multi-sort.svg)](https://npmcharts.com/compare/multi-sort?minimal=true)
 [![bitHound Code](https://www.bithound.io/github/xiCO2k/multi-sort/badges/code.svg)](https://www.bithound.io/github/xiCO2k/multi-sort)
-[![bitHound Dependencies](https://www.bithound.io/github/xiCO2k/multi-sort/badges/dependencies.svg)](https://www.bithound.io/github/xiCO2k/multi-sort/master/dependencies/npm)
 [![bitHound Dev Dependencies](https://www.bithound.io/github/xiCO2k/multi-sort/badges/devDependencies.svg)](https://www.bithound.io/github/xiCO2k/multi-sort/master/dependencies/npm)
 
 # multi-sort
