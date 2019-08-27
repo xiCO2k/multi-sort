@@ -1,24 +1,27 @@
 {
   "name": "multi-sort",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Francisco Madeira",
   "homepage": "https://xico2k.github.io/multi-sort/",
   "license": "MIT",
   "repository": "https://github.com/xico2k/multi-sort",
   "main": "lib/index.js",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.0.1",
-    "babel-jest": "^21.2.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.0",
-    "eslint": "^4.8.0",
-    "eslint-plugin-babel": "^4.1.2",
-    "jest": "^21.2.1"
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.2.2",
+    "eslint-plugin-babel": "^5.3.0",
+    "jest": "^24.9.0",
+    "request": "^2.88.0"
   },
   "scripts": {
     "lib": "rm -rf lib && NODE_ENV=production babel src --out-dir lib --copy-files --ignore '**/*.test.js'",
     "test": "NODE_ENV=testing jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags"
   }
 }
