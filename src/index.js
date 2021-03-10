@@ -65,30 +65,38 @@ function formatData(arr, key) {
     return data;
 }
 
+function getValue(column, item) {
+    column = column.split('.');
+
+    let value = item;
+    column.forEach((col) => {
+        value = value[col];
+    });
+
+    if (typeof value === 'boolean' ||
+        typeof value === 'undefined') {
+        value = value ? 1 : 0;
+    }
+
+    return value;
+}
+
 function sort(a, b, columns, orderBy, index) {
     let direction = orderBy[index] == 'DESC' ? 1 : 0;
+    const aValue = getValue(columns[index], a);
+    const bValue = getValue(columns[index], b);
 
-    if (typeof a[columns[index]] === 'boolean' ||
-        typeof a[columns[index]] === 'undefined') {
-        a[columns[index]] = a[columns[index]] ? 1 : 0;
-    }
-
-    if (typeof b[columns[index]] === 'boolean' ||
-        typeof b[columns[index]] === 'undefined') {
-        b[columns[index]] = b[columns[index]] ? 1 : 0;
-    }
-
-    let isNumeric = !isNaN(+a[columns[index]] - +b[columns[index]]),
+    let isNumeric = !isNaN(+aValue - +bValue),
         x = isNumeric ?
-            +a[columns[index]] :
-            Array.isArray(a[columns[index]]) ?
-                a[columns[index]] :
-                ('' + a[columns[index]]).toLowerCase(),
+            +aValue :
+            Array.isArray(aValue) ?
+                aValue :
+                ('' + aValue).toLowerCase(),
         y = isNumeric ?
-            +b[columns[index]] :
-            Array.isArray(b[columns[index]]) ?
-                b[columns[index]] :
-                ('' + b[columns[index]]).toLowerCase();
+            +bValue :
+            Array.isArray(bValue) ?
+                bValue :
+                ('' + bValue).toLowerCase();
 
     if (x < y) {
         return direction == 0 ? -1 : 1;

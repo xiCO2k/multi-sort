@@ -25,6 +25,18 @@ it('can sort an object with objects', () => {
     expect(MultiSort(data, ['first_name', 'last_name'], ['ASC', 'DESC'])[0].last_name).toBe('Zipher');
 });
 
+it('can sort an object by child objects', () => {
+    let data = {
+        key1: { name: { first: 'John', last: 'Doe' } },
+        key2: { name: { first: 'Anthony', last: 'Zipher' } },
+        key3: { name: { first: 'Anthony', last: 'Carlos' } }
+    };
+
+    const result = MultiSort(data, ['name.first', 'name.last'], ['ASC', 'ASC']);
+    expect(result[0].name.first).toBe('Anthony');
+    expect(result[0].name.last).toBe('Carlos');
+});
+
 it('must have the object key inside of the object', () => {
     let data = {
         key1: { first_name: 'John', last_name: 'Doe' }
