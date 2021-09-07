@@ -5,7 +5,7 @@
 
 [![NPM](https://nodei.co/npm/multi-sort.png?downloads=true&downloadRank=true)](https://npmjs.org/package/multi-sort)
 
-JS Multidimention Sort Helper
+Multidimensional Sort Helper
 
 ## Installation
 With [npm](https://www.npmjs.com):
