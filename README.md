@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/xiCO2k/multi-sort.svg?branch=master)](https://travis-ci.org/xiCO2k/multi-sort)
 [![npm downloads](https://img.shields.io/npm/dt/multi-sort.svg)](https://npmcharts.com/compare/multi-sort?minimal=true)
 
 # multi-sort
