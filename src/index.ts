@@ -1,4 +1,4 @@
-function validateData(data) {
+function validateData(data):void {
   if (!data || typeof data !== 'object' ||
     (Array.isArray(data) && data.length && (Array.isArray(data[0]) || typeof data[0] !== 'object'))
   ) {
@@ -6,24 +6,30 @@ function validateData(data) {
   }
 }
 
-function validateKey(key) {
+function validateKey(key):void {
   if (typeof key !== 'string') {
     throw new Error('The key param needs to be a string');
   }
 }
 
-function validateParams(data, columns, orderBy, key) {
+function validateParams(data, columns, orderBy, key):void {
   validateData(data);
   validateKey(key);
 }
 
-function isObject(data) {
+function isObject(data):boolean {
   return data !== null &&
     typeof data === 'object' &&
     !Array.isArray(data);
 }
 
-function formatArguments(args) {
+interface Arguments {
+  columns:Array<string>,
+  orderBy:Array<string>,
+  key:string,
+}
+
+function formatArguments(args:Array<any>):Arguments {
   let columns = [];
   let orderBy = [];
   let key = '_key';
@@ -53,7 +59,7 @@ function formatArguments(args) {
   return { columns, orderBy, key };
 }
 
-function formatData(arr, key) {
+function formatData(arr, key):Array<any> {
   if (Array.isArray(arr)) {
     return arr;
   }
@@ -67,7 +73,7 @@ function formatData(arr, key) {
   return data;
 }
 
-function getValue(column, item) {
+function getValue(column, item):any {
   column = column.split('.');
 
   let value = item;
@@ -83,7 +89,7 @@ function getValue(column, item) {
   return value;
 }
 
-function sort(a, b, columns, orderBy, index) {
+function sort(a, b, columns, orderBy, index):number {
   const direction = orderBy[index] === 'DESC' ? 1 : 0;
   const aValue = getValue(columns[index], a);
   const bValue = getValue(columns[index], b);
@@ -108,7 +114,10 @@ function sort(a, b, columns, orderBy, index) {
   return direction === 0 ? 1 : -1;
 }
 
-export default function MultiSort(arr = [], ...args) {
+export default function MultiSort(
+  arr:Array<any> = [],
+  ...args:Array<any>
+):Array<any> {
   const { columns, orderBy, key } = formatArguments(args);
   validateParams(arr, columns, orderBy, key); // it throws
   return formatData(arr, key).sort((a, b) => sort(a, b, columns, orderBy, 0));
