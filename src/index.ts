@@ -1,7 +1,7 @@
 function validateData(data) {
   if (!data || typeof data !== 'object' ||
-        Array.isArray(data) && data.length &&
-        (Array.isArray(data[0]) || typeof data[0] !== 'object')) {
+    (Array.isArray(data) && data.length && (Array.isArray(data[0]) || typeof data[0] !== 'object'))
+  ) {
     throw new Error('It can\'t sort, validate the data sent');
   }
 }
@@ -17,24 +17,27 @@ function validateParams(data, columns, orderBy, key) {
   validateKey(key);
 }
 
+function isObject(data) {
+  return data !== null &&
+    typeof data === 'object' &&
+    !Array.isArray(data);
+}
+
 function formatArguments(args) {
   let columns = [];
   let orderBy = [];
   let key = '_key';
 
   // If is Object
-  if (args[0] !== null &&
-        typeof args[0] === 'object' &&
-        !Array.isArray(args[0])) {
-    for (const column in args[0]) {
+  if (isObject(args[0])) {
+    Object.entries(args[0]).forEach(([column, direction]) => {
       columns.push(column);
-      orderBy.push(args[0][column]);
-    }
+      orderBy.push(direction);
+    });
 
     key = args[1] || key;
   } else {
-    columns = args[0];
-    orderBy = args[1];
+    [columns, orderBy] = args;
 
     if (typeof columns === 'string') {
       columns = [columns];
@@ -57,9 +60,9 @@ function formatData(arr, key) {
 
   const data = [];
 
-  for (const i in arr) {
+  Object.keys(arr).forEach(i => {
     data.push({ ...arr[i], [key]: i });
-  }
+  });
 
   return data;
 }
@@ -81,31 +84,28 @@ function getValue(column, item) {
 }
 
 function sort(a, b, columns, orderBy, index) {
-  const direction = orderBy[index] == 'DESC' ? 1 : 0;
+  const direction = orderBy[index] === 'DESC' ? 1 : 0;
   const aValue = getValue(columns[index], a);
   const bValue = getValue(columns[index], b);
 
-  const isNumeric = !isNaN(+aValue - +bValue);
-  const x = isNumeric ?
-    +aValue :
-    Array.isArray(aValue) ?
-      aValue :
-      (`${aValue}`).toLowerCase();
-  const y = isNumeric ?
-    +bValue :
-    Array.isArray(bValue) ?
-      bValue :
-      (`${bValue}`).toLowerCase();
+  const isNumeric = !Number.isNaN(+aValue - +bValue);
+  const x = isNumeric
+    ? +aValue : Array.isArray(aValue)
+      ? aValue : (`${aValue}`).toLowerCase();
+
+  const y = isNumeric
+    ? +bValue : Array.isArray(bValue)
+      ? bValue : (`${bValue}`).toLowerCase();
 
   if (x < y) {
-    return direction == 0 ? -1 : 1;
+    return direction === 0 ? -1 : 1;
   }
 
-  if (x == y) {
+  if (x === y) {
     return columns.length - 1 > index ? sort(a, b, columns, orderBy, index + 1) : 0;
   }
 
-  return direction == 0 ? 1 : -1;
+  return direction === 0 ? 1 : -1;
 }
 
 export default function MultiSort(arr = [], ...args) {
