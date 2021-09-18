@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitThis": true,
+    "declaration": true,
+    "declarationDir": "./lib",
+    "outDir": "./lib",
+    "baseUrl": ".",
+    "lib": ["es6", "es2017"],
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src/index.ts"
+  ]
+}
