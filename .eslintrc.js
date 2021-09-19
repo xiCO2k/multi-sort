@@ -27,7 +27,7 @@ module.exports = {
     'no-nested-ternary': 0,
     'import/no-unresolved': 0,
     'import/extensions': 0,
-    '@typescript-eslint/type-annotation-spacing': ['error', { before: false, after: false }],
+    '@typescript-eslint/type-annotation-spacing': ['error', { before: false, after: true }],
     '@typescript-eslint/member-delimiter-style': ['error', {
       multiline: { delimiter: 'comma' },
     }],

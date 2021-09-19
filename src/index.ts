@@ -1,4 +1,4 @@
-function validateData(data):void {
+function validateData(data): void {
   if (!data || typeof data !== 'object' ||
     (Array.isArray(data) && data.length && (Array.isArray(data[0]) || typeof data[0] !== 'object'))
   ) {
@@ -6,30 +6,30 @@ function validateData(data):void {
   }
 }
 
-function validateKey(key):void {
+function validateKey(key): void {
   if (typeof key !== 'string') {
     throw new Error('The key param needs to be a string');
   }
 }
 
-function validateParams(data, columns, orderBy, key):void {
+function validateParams(data, columns, orderBy, key): void {
   validateData(data);
   validateKey(key);
 }
 
-function isObject(data):boolean {
+function isObject(data): boolean {
   return data !== null &&
     typeof data === 'object' &&
     !Array.isArray(data);
 }
 
 interface Arguments {
-  columns:Array<string>,
-  orderBy:Array<string>,
-  key:string,
+  columns: Array<string>,
+  orderBy: Array<string>,
+  key: string,
 }
 
-function formatArguments(args:Array<any>):Arguments {
+function formatArguments(args: Array<any>): Arguments {
   let columns = [];
   let orderBy = [];
   let key = '_key';
@@ -59,7 +59,7 @@ function formatArguments(args:Array<any>):Arguments {
   return { columns, orderBy, key };
 }
 
-function formatData(arr, key):Array<any> {
+function formatData(arr, key): Array<any> {
   if (Array.isArray(arr)) {
     return arr;
   }
@@ -73,7 +73,7 @@ function formatData(arr, key):Array<any> {
   return data;
 }
 
-function getValue(column, item):any {
+function getValue(column, item): any {
   column = column.split('.');
 
   let value = item;
@@ -89,7 +89,7 @@ function getValue(column, item):any {
   return value;
 }
 
-function sort(a, b, columns, orderBy, index):number {
+function sort(a, b, columns, orderBy, index): number {
   const direction = orderBy[index] === 'DESC' ? 1 : 0;
   const aValue = getValue(columns[index], a);
   const bValue = getValue(columns[index], b);
@@ -115,9 +115,9 @@ function sort(a, b, columns, orderBy, index):number {
 }
 
 export default function MultiSort(
-  arr:Array<any> = [],
-  ...args:Array<any>
-):Array<any> {
+  arr: Array<any> = [],
+  ...args: Array<any>
+): Array<any> {
   const { columns, orderBy, key } = formatArguments(args);
   validateParams(arr, columns, orderBy, key); // it throws
   return formatData(arr, key).sort((a, b) => sort(a, b, columns, orderBy, 0));
