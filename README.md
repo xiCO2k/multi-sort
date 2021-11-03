@@ -18,6 +18,8 @@ $ yarn add multi-sort
 
 ## Usage
 
+There are multiple ways to use this package, check the example bellow:
+
 ```js
 import MultiSort from 'multi-sort';
 
@@ -27,8 +29,6 @@ const arr = [
     { first_name: 'Anthony', last_name: 'Carlos' },
 ];
 ```
-
-There are multiple ways to use this package.
 
 With arguments providing the object `key` and the `direction`:
 
