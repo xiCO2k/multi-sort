@@ -1,8 +1,14 @@
-[![npm downloads](https://img.shields.io/npm/dt/multi-sort.svg)](https://npmcharts.com/compare/multi-sort?minimal=true)
+<h1 align="center" style="border:none !important">
+    Multi-Sort
+    <br>
+    <br>
+</h1>
 
-# multi-sort
-
-[![NPM](https://nodei.co/npm/multi-sort.png?downloads=true&downloadRank=true)](https://npmjs.org/package/multi-sort)
+<p align="center">
+    <a href="https://github.com/xiCO2k/multi-sort/actions"><img alt="GitHub Workflow Status (master)" src="https://img.shields.io/github/workflow/status/xiCO2k/multi-sort/Tests/master"></a>
+    <a href="https://www.npmjs.com/package/multi-sort"><img alt="Total Downloads" src="https://nodei.co/npm/multi-sort.png?downloads=true&downloadRank=true)](https://npmjs.org/package/multi-sort"></a>
+    <a href="https://www.npmjs.com/package/multi-sort"><img alt="License" src="https://img.shields.io/npm/l/multi-sort.svg?sanitize=true"></a>
+</p>
 
 This package allows you to sort a multi dimensional array easily.
 
