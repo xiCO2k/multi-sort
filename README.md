@@ -1,5 +1,5 @@
 <h1 align="center" style="border:none !important">
-    Multi-Sort
+    MultiSort
 </h1>
 
 <p align="center">
