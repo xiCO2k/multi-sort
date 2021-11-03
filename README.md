@@ -8,7 +8,9 @@
     <a href="https://www.npmjs.com/package/multi-sort"><img alt="License" src="https://img.shields.io/npm/l/multi-sort.svg?sanitize=true"></a>
 </p>
 
-This package allows you to sort a multi dimensional array easily.
+<p align="center">
+    This package allows you to sort a multi dimensional array easily.
+</p>
 
 ## Installation
 With [npm](https://www.npmjs.com):
