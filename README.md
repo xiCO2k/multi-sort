@@ -4,7 +4,7 @@
 
 [![NPM](https://nodei.co/npm/multi-sort.png?downloads=true&downloadRank=true)](https://npmjs.org/package/multi-sort)
 
-Multidimensional Sort Helper
+This package allows you to sort a multi dimensional array easily.
 
 ## Installation
 With [npm](https://www.npmjs.com):
@@ -18,7 +18,7 @@ $ yarn add multi-sort
 
 ## Usage
 
-```javascript
+```js
 import MultiSort from 'multi-sort';
 
 let arr = [
