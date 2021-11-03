@@ -21,20 +21,39 @@ $ yarn add multi-sort
 ```js
 import MultiSort from 'multi-sort';
 
-let arr = [
+const arr = [
     { first_name: 'John', last_name: 'Doe' },
     { first_name: 'Anthony', last_name: 'Zipher' },
-    { first_name: 'Anthony', last_name: 'Carlos' }
+    { first_name: 'Anthony', last_name: 'Carlos' },
 ];
+```
 
-let sortedByFirstName = MultiSort(arr, 'first_name', 'ASC');
+There are multiple ways to use this package.
 
-/* Sort by multi params */
-let sortedByFirstAndLast = MultiSort(arr, ['first_name', 'last_name'], ['ASC', 'DESC']);
-/* or */
-let sortedByFirstAndLast = MultiSort(arr, {
+With arguments providing the object `key` and the `direction`:
+
+```js
+const sortedByFirstName = MultiSort(arr, 'first_name', 'ASC');
+```
+
+With arguments providing an array of object `keys` and `directions`:
+
+```js
+const sortedByFirstAndLast = MultiSort(
+    arr,
+    ['first_name', 'last_name'],
+    ['ASC', 'DESC']
+);
+```
+
+Or, With an Object where the `key` represents the object `key` on the array provided and the `value` represents
+the `direction`:
+
+```js
+const sortedByFirstAndLast = MultiSort(arr, {
     first_name: 'ASC',
-    last_name: 'DESC'
+    last_name: 'DESC',
 });
 ```
 
+MultiSort is an open-sourced software licensed under the **[MIT license](https://opensource.org/licenses/MIT)**.
